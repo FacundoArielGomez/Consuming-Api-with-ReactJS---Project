@@ -1,0 +1,24 @@
+.gifs-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    width: 95%;
+    gap: 1rem;
+}
+
+.single-gif {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1rem 0.05rem 1.5rem 0.5rem;
+    margin-top: 1rem;
+    background: #501F3A;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+.single-gif img {
+    width: 18rem;
+    height: 18rem;
+    object-fit: cover;
+}

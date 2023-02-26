@@ -1,0 +1,12 @@
+/*
+primary-color: #0F292F
+second-color: #14A098
+light-red: #CB2D6F
+dark-red: #501F3A
+white-read: #CCCCCC
+*/
+body {
+    background: #0f292f;
+    font-family: Helvetica;
+    font-size: 1.5rem;
+}
