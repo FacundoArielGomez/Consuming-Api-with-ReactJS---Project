@@ -1,20 +1,26 @@
-import React, {useState} from 'react'
+import React, {useState, useRef, useCallback} from 'react'
 import './header.css'
-
-
 import {MainPage} from './Mainpage'
+import debounce from "just-debounce-it"
+import { useFetchingGifs } from '../hooks/useFetchingGifs'
+import {EmptySearch} from './EmptySearch'
 
 export function Header(){
 
-    const [search, setSearch] = useState('Goku')
+    const [search, setSearch] = useState('')
 
-    function handleSubmit (e){
-        e.preventDefault()
-        setSearch(search)
-    }
+    const {gifs, getGifs, loading} = useFetchingGifs()
+    
+    const debouncedCallApiFetch = useCallback(debounce((search) => {
+        return(
+            getGifs(search)
+        )
+    }, 400),[getGifs]);
+
 
     const handleInput = (e)=>{
         setSearch(e.target.value)
+        debouncedCallApiFetch(e.target.value)   
     }
 
     return (
@@ -29,7 +35,7 @@ export function Header(){
             </form>
 
         </header>
-        <MainPage search={search}></MainPage>
+        {(search === '') ? <EmptySearch />:<MainPage gifs={gifs} loading={loading}></MainPage>}
         </>
     )
 }

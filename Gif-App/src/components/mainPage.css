@@ -1,8 +1,10 @@
 .gifs-wrapper {
+    margin-top: 3.5rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     width: 95%;
     gap: 1rem;
+    padding-bottom: 1rem;
 }
 
 .single-gif {
