@@ -1,15 +1,17 @@
-import React, {useState, useRef, useCallback} from 'react'
+import React, {useState, useId, useCallback} from 'react'
 import './header.css'
 import {MainPage} from './Mainpage'
 import debounce from "just-debounce-it"
 import { useFetchingGifs } from '../hooks/useFetchingGifs'
 import {EmptySearch} from './EmptySearch'
+import {ErrorDiv} from './ErrorDiv'
 
 export function Header(){
+    const mainSearchInput = useId()
 
     const [search, setSearch] = useState('')
 
-    const {gifs, getGifs, loading} = useFetchingGifs()
+    const {gifs, getGifs, loading, error} = useFetchingGifs()
     
     const debouncedCallApiFetch = useCallback(debounce((search) => {
         return(
@@ -30,11 +32,12 @@ export function Header(){
             <h1>Gif App</h1>
 
             <form onSubmit={(e) => handleSubmit(e)}>
-            <input onChange={(e)=> handleInput(e)} value={search} name="mainSearch" placeholder="John Wick, pets, fun, etc"></input>
-            <button>Search</button>
+            <label htmlFor={mainSearchInput}>What do you want to see?</label>
+            <input type="text" id={mainSearchInput} onChange={(e)=> handleInput(e)} value={search} name="mainSearch" placeholder="John Wick, pets, fun, etc"></input>
             </form>
 
         </header>
+        {error ? <ErrorDiv error={error}/> : null}
         {(search === '') ? <EmptySearch />:<MainPage gifs={gifs} loading={loading}></MainPage>}
         </>
     )

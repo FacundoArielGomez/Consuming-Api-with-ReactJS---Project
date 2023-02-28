@@ -16,21 +16,10 @@ header {
 
 header form {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 4rem;
-}
-
-header button {  
-        all: initial;
-        color: #fff;
-        font-size:  1.5rem;
-        background-color: #CB2d6f;
-        border-radius: 3px;
-        cursor: pointer;
-        letter-spacing: 0.02rem;
-        padding: 0.2rem 2rem;
-        margin-left: 0.3rem;    
 }
 
 header input {
@@ -38,4 +27,9 @@ header input {
     font-size: 1.5rem;
     padding: 0.1rem;
     border-radius: 3px;
+}
+
+header label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
 }

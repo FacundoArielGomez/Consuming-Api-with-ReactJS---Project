@@ -20,5 +20,5 @@ export const useFetchingGifs = ()=>{
     }
 },[])
 
-    return ({gifs, getGifs, loading})
+    return ({gifs, getGifs, loading, error})
 }
