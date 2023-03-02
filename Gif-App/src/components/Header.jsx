@@ -37,8 +37,7 @@ export function Header(){
             </form>
 
         </header>
-        {error ? <ErrorDiv error={error}/> : null}
-        {(search === '') ? <EmptySearch />:<MainPage gifs={gifs} loading={loading}></MainPage>}
+        {error ? <ErrorDiv error={error}/> : (search === '') ? <EmptySearch />:<MainPage gifs={gifs} loading={loading}></MainPage>}
         </>
     )
 }

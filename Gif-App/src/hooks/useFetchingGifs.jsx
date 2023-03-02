@@ -7,17 +7,17 @@ export const useFetchingGifs = ()=>{
     const [error, setError] = useState(null)
 
     const getGifs= useCallback((search)=>{
-    try{
         setLoading(true)
         setError(null)
+
         fetchGifs(search).
         then(gifsResponse => {             
             setGifs(gifsResponse)
             setLoading(false)
-        })
-    }catch(e){
+        }).catch(e => {
         setError(e.message)
-    }
+        }
+        )
 },[])
 
     return ({gifs, getGifs, loading, error})
