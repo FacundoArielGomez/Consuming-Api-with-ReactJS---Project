@@ -1,10 +1,9 @@
-import React, {useState, useId, useCallback} from 'react'
+import React, {useState, useId, useCallback, useEffect} from 'react'
 import './header.css'
-import {MainPage} from './Mainpage'
+import {MainPage} from '../../pages/Home/MainPage'
 import debounce from "just-debounce-it"
-import { useFetchingGifs } from '../hooks/useFetchingGifs'
-import {EmptySearch} from './EmptySearch'
-import {ErrorDiv} from './ErrorDiv'
+import { useFetchingGifs } from '../../hooks/useFetchingGifs'
+
 
 export function Header(){
     const mainSearchInput = useId()
@@ -37,7 +36,7 @@ export function Header(){
             </form>
 
         </header>
-        {error ? <ErrorDiv error={error}/> : (search === '') ? <EmptySearch />:<MainPage gifs={gifs} loading={loading}></MainPage>}
+        <MainPage gifs={gifs} loading={loading} error={error} search={search}></MainPage>
         </>
     )
 }

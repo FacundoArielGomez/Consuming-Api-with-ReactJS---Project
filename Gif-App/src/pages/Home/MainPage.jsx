@@ -1,16 +1,21 @@
 import React from 'react'
 import './mainPage.css'
-import {Spinner} from './Spinner'
-import {ThereAreNotGifs} from './ThereAreNotGifs'
+import {Spinner} from '../../components/spinner/Spinner'
+import {ThereAreNotGifs} from '../../components/thereAreNotGifs/ThereAreNotGifs'
+import {EmptySearch} from '../../components/EmptySearch'
+import {ErrorDiv} from '../../components/ErrorDiv'
 
-export const MainPage = ({gifs, loading}) => {
+export const MainPage = ({gifs, loading, search, error}) => {
 
     const thereAreNOTGifs = (gifs.length === 0)
 
     return (
         <main className="gifs-wrapper">
             {(!(loading) && thereAreNOTGifs) ? <ThereAreNotGifs />: null}
+            
             {
+            error ? <ErrorDiv/> :
+            (search === '') ? <EmptySearch/> :
             loading ? <Spinner /> :
                 gifs?.map(gif => {
                     return(

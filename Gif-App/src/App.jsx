@@ -1,15 +1,13 @@
 import React from 'react'
 import './app.css'
-import {Header} from './components/Header'
-
+import {Header} from './components/header/Header'
 
 function App() {
 
   return (
     <div className="wrap-App">
-    <Header>
-    </Header>
-    
+      <Header>
+      </Header>
     </div>
   )
 }
