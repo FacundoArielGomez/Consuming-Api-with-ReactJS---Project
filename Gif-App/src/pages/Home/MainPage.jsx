@@ -6,12 +6,12 @@ import {EmptySearch} from '../../components/EmptySearch'
 import {ErrorDiv} from '../../components/ErrorDiv'
 
 export const MainPage = ({gifs, loading, search, error}) => {
-
+    
     const thereAreNOTGifs = (gifs.length === 0)
 
     return (
         <main className="gifs-wrapper">
-            {(!(loading) && thereAreNOTGifs) ? <ThereAreNotGifs />: null}
+            {(!(loading) && thereAreNOTGifs && (search !== '')) ? <ThereAreNotGifs />: null}
             
             {
             error ? <ErrorDiv/> :
