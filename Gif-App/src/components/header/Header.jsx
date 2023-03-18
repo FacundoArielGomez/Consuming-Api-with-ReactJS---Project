@@ -1,8 +1,11 @@
-import React, {useState, useId, useCallback, useEffect} from 'react'
+import React, {useState, useId, useCallback} from 'react'
 import './header.css'
 import {MainPage} from '../../pages/Home/MainPage'
+import {MoreInfo} from '../../pages/MoreInfo/MoreInfo'
 import debounce from "just-debounce-it"
-import { useFetchingGifs } from '../../hooks/useFetchingGifs'
+import {Routes, Route, useNavigate } from 'react-router-dom'
+import { useContext } from 'react'
+import {GifsContext} from '../../context/gifsContext/GifsProvider'
 
 
 export function Header(){
@@ -10,7 +13,8 @@ export function Header(){
 
     const [search, setSearch] = useState('')
 
-    const {gifs, getGifs, loading, error} = useFetchingGifs()
+    const {gifs, getGifs, loading, error} = useContext(GifsContext)
+
     
     const debouncedCallApiFetch = useCallback(debounce((search) => {
         return(
@@ -18,10 +22,16 @@ export function Header(){
         )
     }, 400),[getGifs]);
 
-
     const handleInput = (e)=>{
         setSearch(e.target.value)
         debouncedCallApiFetch(e.target.value)   
+    }
+
+    const navigate = useNavigate();
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+        navigate("/");
+
     }
 
     return (
@@ -36,7 +46,13 @@ export function Header(){
             </form>
 
         </header>
-        <MainPage gifs={gifs} loading={loading} error={error} search={search}></MainPage>
+      
+            <Routes>
+                <Route path='/' element={<MainPage gifs={gifs} loading={loading} error={error} search={search}></MainPage>}></Route>
+                <Route path='/moreInfo/:id' element={<MoreInfo></MoreInfo>}></Route>
+            </Routes>
+        
+
         </>
     )
 }

@@ -12,9 +12,10 @@ export const useFetchingGifs = ()=>{
         setError(null)
 
         fetchGifs(search).
-        then(gifsResponse => {             
-            setGifs(gifsResponse)
-            setLoading(false)
+        then(gifsResponse => {          
+            localStorage.setItem("gifs", JSON.stringify(gifsResponse))           
+            setGifs(gifsResponse)           
+            setLoading(false)         
         }).catch(e => {
         setError(e.message)
         }

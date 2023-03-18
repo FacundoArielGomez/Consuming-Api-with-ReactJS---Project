@@ -11,7 +11,6 @@ export async function fetchGifs(query){
             const idGif = gif.id;
             const imageGif = gif.images.fixed_height.url;
             const titleGif = gif.title;
-            console.log('3er cambio')
                 
             return {idGif, imageGif, titleGif}
     })

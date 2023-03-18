@@ -4,6 +4,7 @@ import {Spinner} from '../../components/spinner/Spinner'
 import {ThereAreNotGifs} from '../../components/thereAreNotGifs/ThereAreNotGifs'
 import {EmptySearch} from '../../components/EmptySearch'
 import {ErrorDiv} from '../../components/ErrorDiv'
+import {Link} from 'react-router-dom'
 
 export const MainPage = ({gifs, loading, search, error}) => {
     
@@ -19,10 +20,12 @@ export const MainPage = ({gifs, loading, search, error}) => {
             loading ? <Spinner /> :
                 gifs?.map(gif => {
                     return(
-                    <div className="single-gif" key={gif.idGif}>
+                    <Link to={`/moreInfo/${gif.idGif}`} key={gif.idGif}>
+                    <div className="single-gif" >
                         <h2>{gif.titleGif}</h2>
                         <img src={gif.imageGif}></img>
                     </div>
+                    </Link>
                     )
                 }
                 )
