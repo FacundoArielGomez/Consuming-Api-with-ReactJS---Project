@@ -50,6 +50,8 @@ export function Header(){
             <Routes>
                 <Route path='/' element={<MainPage gifs={gifs} loading={loading} error={error} search={search}></MainPage>}></Route>
                 <Route path='/moreInfo/:id' element={<MoreInfo></MoreInfo>}></Route>
+                <Route path='/moreinfo' element={<MoreInfo/>} />
+                <Route path='/moreinfo/*' element={<MoreInfo/>} />
             </Routes>
         
 
