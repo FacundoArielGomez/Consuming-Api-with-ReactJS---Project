@@ -2,7 +2,7 @@ import React from 'react'
 import './app.css'
 import {Header} from './components/header/Header'
 import {GifsProvider} from './context/gifsContext/GifsProvider'
-import { BrowserRouter as Router} from 'react-router-dom'
+import { HashRouter as Router} from 'react-router-dom'
 
 function App() {
 
