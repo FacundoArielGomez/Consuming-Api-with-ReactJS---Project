@@ -52,6 +52,7 @@ export function Header(){
                 <Route path='/moreInfo/:id' element={<MoreInfo></MoreInfo>}></Route>
                 <Route path='/moreinfo' element={<MoreInfo/>} />
                 <Route path='/moreinfo/*' element={<MoreInfo/>} />
+                <Route path='https://gif-4zjb7hxyy-facundoarielgomez.vercel.app/moreInfo/*' element={<MoreInfo/>}></Route>
             </Routes>
         
 
